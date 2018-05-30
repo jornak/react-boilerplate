@@ -143,3 +143,8 @@ npm run lint
 
 Lints your JavaScript.
 
+## Dependency add
+
+```Shell
+yarn add dependencyName
+```
