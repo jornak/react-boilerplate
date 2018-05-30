@@ -49,6 +49,11 @@ module.exports = {
     name: 'wantLoadable',
     default: true,
     message: 'Do you want to load resources asynchronously?',
+  },{
+    type: 'confirm',
+    name: 'wantForm',
+    default: true,
+    message: 'Do you want to use redux-form to handle inputs?',
   }],
   actions: (data) => {
     // Generate index.js and index.test.js

@@ -1,0 +1,5 @@
+Add to api as work around for bug.
+
+import * as URLSearchParams from "url-search-params"
+
+url.URLSearchParams = URLSearchParams

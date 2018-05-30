@@ -32,6 +32,8 @@
   - [redux-saga](js/redux-saga.md)
   - [i18n](js/i18n.md)
   - [routing](js/routing.md)
+  - [Forms](https://github.com/erikras/redux-form)
+  - [Form submit saga](https://github.com/colinbate/redux-form-submit-saga)
 - [Maintenance](maintenance)
   - [Dependency Update](maintenance/dependency.md)
 

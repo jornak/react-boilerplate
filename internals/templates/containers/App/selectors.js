@@ -7,6 +7,12 @@ const makeSelectLocation = () => createSelector(
   (routeState) => routeState.get('location').toJS()
 );
 
+const makeSelectFormState = () => createSelector(
+  selectForm,
+  (formState) => formState
+)
+
 export {
   makeSelectLocation,
+  makeSelectFormState,
 };

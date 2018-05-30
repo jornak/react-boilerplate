@@ -16,8 +16,14 @@ import { FormattedMessage } from 'react-intl';
 {{#if wantActionsAndReducer}}
 import { createStructuredSelector } from 'reselect';
 {{/if}}
-import { compose } from 'redux';
+{{#if wantForm}}
+import {Field} from "redux-form"
+{{/if}}
+import { compose, bindActionCreators } from 'redux';
 
+{{#if wantForm}}
+import {makeSelectFormState} from "containers/App/selectors";
+{{/if}}
 {{#if wantSaga}}
 import injectSaga from 'utils/injectSaga';
 {{/if}}
@@ -52,7 +58,7 @@ export class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line
 }
 
 {{ properCase name }}.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+
 };
 
 {{#if wantActionsAndReducer}}
@@ -62,9 +68,7 @@ const mapStateToProps = createStructuredSelector({
 {{/if}}
 
 function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
+  return bindActionCreators({/*actions*/}, dispatch);
 }
 
 {{#if wantActionsAndReducer}}
@@ -74,6 +78,14 @@ const withReducer = injectReducer({ key: '{{ camelCase name }}', reducer });
 {{else}}
 const withConnect = connect(null, mapDispatchToProps);
 {{/if}}
+
+{{#if wantForm}}
+const withReduxForm = reduxForm({
+form: '{{ camelCase name }}', getFormState: makeSelectFormState()
+})
+{{/if}}
+
+
 {{#if wantSaga}}
 const withSaga = injectSaga({ key: '{{ camelCase name }}', saga });
 {{/if}}
@@ -84,6 +96,9 @@ export default compose(
 {{/if}}
 {{#if wantSaga}}
   withSaga,
+{{/if}}
+{{#if wantForm}}
+  withReduxForm,
 {{/if}}
   withConnect,
 )({{ properCase name }});
