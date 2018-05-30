@@ -141,5 +141,11 @@ about the bundle size.
 npm run lint
 ```
 
+## Dependency add
+
+```Shell
+yarn add dependencyName
+```
+
 Lints your JavaScript.
 
