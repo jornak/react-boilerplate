@@ -12,7 +12,7 @@ const makeSelectLocation = () => createSelector(
 const makeSelectFormState = () => createSelector(
   selectForm,
   (formState) => formState
-)
+);
 
 export {
   makeSelectLocation,

@@ -12,10 +12,6 @@
 
 import { fromJS } from 'immutable';
 
-import {
-  DEFAULT_LOCALE
-} from './constants';
-
 // The initial state of the App
 const initialState = fromJS({
  });
