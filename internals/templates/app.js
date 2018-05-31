@@ -49,6 +49,8 @@ import './global-styles';
 import {ThemeProvider} from "styled-components";
 import {theme} from "./utils/theme";
 
+import ScrollToTop from "./utils/ScrollToTop";
+
 // Create redux store with history
 const initialState = {};
 const history = createHistory();
