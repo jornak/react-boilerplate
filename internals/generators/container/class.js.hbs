@@ -19,11 +19,12 @@ import { createStructuredSelector } from 'reselect';
 {{#if wantForm}}
 import {Field, reduxForm} from "redux-form";
 {{/if}}
+import { compose, bindActionCreators } from 'redux';
+
+
 {{#if wantSecurityCheck}}
   import { {{wantSecurityFnc}} } from "utils/security/security";
 {{/if}}
-import { compose, bindActionCreators } from 'redux';
-
 {{#if wantForm}}
 import {makeSelectFormState} from "containers/App/selectors";
 {{/if}}
