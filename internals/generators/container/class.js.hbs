@@ -19,6 +19,9 @@ import { createStructuredSelector } from 'reselect';
 {{#if wantForm}}
 import {Field, reduxForm} from "redux-form";
 {{/if}}
+{{#if wantSecurityCheck}}
+  import { {{wantSecurityFnc}} } from "utils/security/security";
+{{/if}}
 import { compose, bindActionCreators } from 'redux';
 
 {{#if wantForm}}
@@ -91,6 +94,9 @@ const withSaga = injectSaga({ key: '{{ camelCase name }}', saga });
 {{/if}}
 
 export default compose(
+{{#if wantSecurityCheck}}
+  {{ wantSecurityFnc }},
+{{/if}}
 {{#if wantActionsAndReducer}}
   withReducer,
 {{/if}}

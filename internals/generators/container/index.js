@@ -49,12 +49,19 @@ module.exports = {
     name: 'wantLoadable',
     default: true,
     message: 'Do you want to load resources asynchronously?',
-  },{
+  }, {
     type: 'confirm',
     name: 'wantForm',
     default: true,
     message: 'Do you want to use redux-form to handle inputs?',
-  }],
+  }, {
+    type: 'list',
+    name: 'withSecurity',
+    default: "withPrivate",
+    choices: () => ['withPublic', 'withPrivate', "none"],
+    message: 'Should it be decorated with security? (default: withPrivate)',
+  }
+  ],
   actions: (data) => {
     // Generate index.js and index.test.js
     var componentTemplate; // eslint-disable-line no-var
@@ -68,6 +75,25 @@ module.exports = {
         componentTemplate = './container/class.js.hbs';
       }
     }
+
+    function mutateState(data) {
+      switch (data.withSecurity) {
+        case "withPublic":
+          data.wantSecurityCheck = true
+          data.wantSecurityFnc = "withPublic"
+          break;
+        case "withPrivate":
+          data.wantSecurityCheck = true
+          data.wantSecurityFnc = "withPrivate"
+          break;
+        default:
+          data.wantSecurityCheck = false
+          data.wantSecurityFnc = "withPublic"
+          break;
+      }
+    }
+
+    mutateState(data)
 
     const actions = [{
       type: 'add',
