@@ -45,6 +45,10 @@ import { translationMessages } from './i18n';
 // Import CSS reset and Global Styles
 import './global-styles';
 
+// Themes
+import {ThemeProvider} from "styled-components";
+import {theme} from "./utils/theme";
+
 // Create redux store with history
 const initialState = {};
 const history = createHistory();
@@ -56,7 +60,11 @@ const render = (messages) => {
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <App />
+          <ScrollToTop>
+            <ThemeProvider theme={theme}>
+              <App />
+            </ThemeProvider>
+          </ScrollToTop>
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>,
