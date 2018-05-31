@@ -10,3 +10,5 @@
  */
 
 export const DEFAULT_LOCALE = 'en';
+export const ERROR_GENERIC = 'ERROR_GENERIC';
+export const SET_LOADING = 'SET_LOADING';

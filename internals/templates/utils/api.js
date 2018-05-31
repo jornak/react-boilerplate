@@ -1,7 +1,6 @@
 import {errorGenericAction, loadingAction} from "../containers/App/actions";
 import {makeSelectConfiguration} from "../containers/App/selectors";
 import {call, put, select} from "redux-saga/effects";
-import {ClientZoneApi, PublicApi, WizardApi, EnumsApi} from "../api";
 
 const options = {headers: {accept: "application/json"}}
 const configuration = {basePath: process.env.API_IP || undefined}
@@ -41,18 +40,8 @@ function processor(data: { apiFunction: string, sucAction: Function, useAction: 
  * @returns {load}
  */
 export function publicProcessor(apiFunction: string, sucAction: Function, useAction: boolean = false) {
-  return processor({apiFunction, sucAction, useAction}, (config) => new PublicApi(config))
+  return processor({apiFunction, sucAction, useAction}, /*(config) => new PublicApi(config) - swagger constructor*/)
 }
 
-/**
- *
- * @param apiFunction
- * @param sucAction
- * @param useAction - When true => Action must have parameter named "data".
- * @returns {load}
- */
-export function clientZoneProcessor(apiFunction: string, sucAction: Function, useAction: boolean = false) {
-  return processor({apiFunction, sucAction, useAction}, (config) => new ClientZoneApi(config))
-}
 
 export default {options, configuration, STATUS}
