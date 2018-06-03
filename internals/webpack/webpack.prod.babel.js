@@ -3,6 +3,8 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
+const CompressionPlugin = require("compression-webpack-plugin")
+
 
 module.exports = require('./webpack.base.babel')({
   // In production, we skip all hot-reloading stuff
@@ -17,6 +19,10 @@ module.exports = require('./webpack.base.babel')({
   },
 
   plugins: [
+    new CompressionPlugin({
+      algorithm: 'gzip',
+      threshold: 0,
+    }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
