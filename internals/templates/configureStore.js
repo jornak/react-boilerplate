@@ -19,9 +19,10 @@ export default function configureStore(initialState = {}, history) {
   // 3. redux logger: Better control of state
   const middlewares = [
     sagaMiddleware,
-    routerMiddleware(history),
-    process.env.NODE_ENV !== 'production' && logger,
+    routerMiddleware(history)
   ];
+
+  process.env.NODE_ENV !== 'production' && middlewares.push(logger)
 
   const enhancers = [
     applyMiddleware(...middlewares),
