@@ -1,8 +1,8 @@
-import {css} from "styled-components"
+import { css } from 'styled-components';
 
 const sizes = {
   tablet: 992,
-  phone: 426
+  phone: 426,
 }
 
 const media = Object.keys(sizes).reduce((acc, label) => {
@@ -10,9 +10,9 @@ const media = Object.keys(sizes).reduce((acc, label) => {
     @media only screen and (max-width: ${sizes[label] / 16}em) {
       ${css(...args)}
     }
-  `
-  return acc
-}, {})
+  `;
+  return acc;
+}, {});
 
 const color = {
   black: "#000",
@@ -33,5 +33,5 @@ const font = {
 }
 
 export const theme = {
-  color, font, media
+  color, font, media,
 }
