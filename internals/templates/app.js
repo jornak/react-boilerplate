@@ -8,6 +8,9 @@
 // Needed for redux-saga es6 generator support
 import 'babel-polyfill';
 
+// Theme
+import {ThemeProvider} from 'styled-components';
+
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -46,10 +49,9 @@ import { translationMessages } from './i18n';
 import './global-styles';
 
 // Themes
-import {ThemeProvider} from "styled-components";
-import {theme} from "./utils/theme";
+import {theme} from './utils/theme';
 
-import ScrollToTop from "./utils/ScrollToTop";
+import ScrollToTop from './utils/ScrollToTop';
 
 // Create redux store with history
 const initialState = {};
