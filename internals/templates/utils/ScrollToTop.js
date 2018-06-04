@@ -15,7 +15,7 @@ class ScrollToTop extends Component {
 }
 
 ScrollToTop.propTypes = {
-  location: PropTypes.string,
+  location: PropTypes.object,
   children: PropTypes.node,
 };
 
